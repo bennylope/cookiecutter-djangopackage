@@ -4,9 +4,21 @@ Installation
 
 At the command line::
 
-    $ easy_install {{ cookiecutter.repo_name }}
+    $ pip {{ cookiecutter.repo_name }}
 
-Or, if you have virtualenvwrapper installed::
+Installing in your project specific `virtualenv
+<https://virtualenv.pypa.io/en/latest/virtualenv.html>_` is highly recommended.
 
-    $ mkvirtualenv {{ cookiecutter.repo_name }}
-    $ pip install {{ cookiecutter.repo_name }}
+Add `{{ cookiecutter.app_name }}` to your `INSTALLED_APPS` tuple::
+
+    INSTALLED_APPS = (
+        ...
+        '{{ cookiecutter.app_name }}'.
+    )
+
+Add in the app URLs using the endpoint which makes the most sense for
+your project::
+
+    urlpatterns = patterns('',
+        url(r'^{{ cookiecutter.app_name }}/', include('{{ cookiecutter.app_name }}.urls')),
+    )
